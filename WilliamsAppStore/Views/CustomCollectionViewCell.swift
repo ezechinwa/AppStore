@@ -62,33 +62,21 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }()
     
     
-    let previewImage1: UIImageView = {
+    lazy var previewImage1: UIImageView  = self.createHorizontalImage()
+    lazy var previewImage2: UIImageView  = self.createHorizontalImage()
+    lazy var previewImage3: UIImageView  = self.createHorizontalImage()
+    
+    func createHorizontalImage() -> UIImageView {
         let imageView = UIImageView()
         imageView.backgroundColor =  ColorsUtils().hexStringToUIColor(hex: "#1E88E5")
         imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         imageView.layer.cornerRadius = 2
         imageView.clipsToBounds = true
-        
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        imageView.contentMode = .scaleAspectFit
         return imageView
-    }()
-    let previewImage2: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor =  ColorsUtils().hexStringToUIColor(hex: "#1E88E5")
-        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        imageView.layer.cornerRadius = 2
-        imageView.clipsToBounds = true
-        
-        return imageView
-    }()
-    let previewImage3: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor =  ColorsUtils().hexStringToUIColor(hex: "#1E88E5")
-        imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
-        imageView.layer.cornerRadius = 2
-        imageView.clipsToBounds = true
-        
-        return imageView
-    }()
+    }
     
     fileprivate func setUpConstraints(){
       let verticalStackview = UIStackView(arrangedSubviews: [nameLabel, descriptionLabel, ratingLabel])
